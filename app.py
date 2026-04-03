@@ -703,7 +703,7 @@ with st.sidebar:
     # 1. Clearly displaying the BECTON Logo
     try:
         # Encoding the saved PNG file
-        logo_base64 = get_base64_of_bin_file("becton_logo.png")
+        logo_base64 = get_base64_of_bin_file("bec_logo.png")
         
         # Displaying the Image with a subtle glowing border
         st.markdown(f"""
@@ -715,7 +715,7 @@ with st.sidebar:
         
     except FileNotFoundError:
         # Fallback if the image file is missing
-        st.warning("becton_logo.png not found.")
+        st.warning("bec_logo.png not found.")
 
     # 2. Simplified & Helpful Title and Badge
     st.markdown("""
