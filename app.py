@@ -425,36 +425,49 @@ st.markdown("""
 }
 
 .stButton > button:hover::before { left: 100%; }
-
-/* ═══ INPUTS ═══ */
+/* ═══ REFINED INPUTS ═══ */
 .stTextInput > div > div > input,
-.stTextArea > div > div > textarea {
-    background: rgba(0, 245, 255, 0.03) !important;
-    border: 1px solid rgba(0, 245, 255, 0.15) !important;
-    border-radius: 4px !important;
+.stTextArea > div > div > textarea,
+[data-testid="stChatInput"] textarea {
+    background: rgba(0, 245, 255, 0.02) !important;
+    border: 1px solid rgba(0, 245, 255, 0.1) !important;
+    border-radius: 8px !important;
+            padding: 10px 14px !important;
     color: #c8e6f0 !important;
     font-family: var(--font-body) !important;
     font-size: 0.95rem !important;
-    transition: all 0.3s ease !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    outline: none !important; /* Removes the awkward default browser ring */
+    box-shadow: none !important;
 }
 
+/* Smooth Hover State */
+.stTextInput > div > div > input:hover,
+.stTextArea > div > div > textarea:hover {
+    border-color: rgba(0, 245, 255, 0.3) !important;
+    background: rgba(0, 245, 255, 0.04) !important;
+}
+
+/* Focused State (Active) */
 .stTextInput > div > div > input:focus,
 .stTextArea > div > div > textarea:focus {
     border-color: var(--neon-cyan) !important;
-    box-shadow: var(--glow-sm) !important;
+    background: rgba(0, 245, 255, 0.06) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.15) !important;
     outline: none !important;
 }
 
+/* Labels */
 .stTextInput > label,
 .stTextArea > label,
 .stFileUploader > label {
     font-family: var(--font-mono) !important;
-    font-size: 0.7rem !important;
+    font-size: 0.65rem !important;
     letter-spacing: 2px !important;
-    color: rgba(0, 245, 255, 0.6) !important;
+    color: rgba(0, 245, 255, 0.5) !important;
     text-transform: uppercase !important;
+    margin-bottom: 5px !important;
 }
-
 /* ═══ METRICS ═══ */
 [data-testid="stMetric"] {
     background: var(--card-bg) !important;
