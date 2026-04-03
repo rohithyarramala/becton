@@ -7,12 +7,17 @@ from datetime import datetime
 
 # --- CONFIG ---
 st.set_page_config(
-    page_title="BECTON | BEC AI Oracle",
+    # Keywords: Bectagon 2k26, Schedule, BEC, AI Assistant
+    page_title="BECTON | Bectagon 2k26 Schedule & AI Assistant", 
     layout="wide",
     page_icon="⚡",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://becbapatla.ac.in',
+        'Report a bug': "mailto:rohithyarramala@gmail.com",
+        'About': "# BECTON\nOfficial AI Guide for Bectagon 2k26. Created by Rohith Yarramala."
+    }
 )
-
 # --- INITIALIZE SUPABASE & AI ---
 @st.cache_resource
 def init_connection():
