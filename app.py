@@ -709,7 +709,7 @@ with st.sidebar:
         st.markdown(f"""
         <div style="text-align: center; padding-bottom: 20px;">
             <img src="data:image/png;base64,{logo_base64}" 
-                 style="width: 130px; border-radius: 10px; border: 1px solid rgba(0, 245, 255, 0.3); box-shadow: 0 0 10px rgba(0, 245, 255, 0.1);">
+                 style="width: 230px; border-radius: 10px;">
         </div>
         """, unsafe_allow_html=True)
         
