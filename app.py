@@ -5,6 +5,15 @@ from supabase import create_client, Client
 import os
 from datetime import datetime
 
+import base64  # Add this import at the very top of your app.py
+
+# --- HELPER: ENCODE IMAGE FOR HTML ---
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
 # --- CONFIG ---
 st.set_page_config(
     # Keywords: Bectagon 2k26, Schedule, BEC, AI Assistant
@@ -691,18 +700,34 @@ def get_updates():
 
 # ─── SIDEBAR ───────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("""
-    <div class="sidebar-logo">
-        <div class="logo-hex">
-            <span class="logo-inner">B</span>
+    # 1. Clearly displaying the BECTON Logo
+    try:
+        # Encoding the saved PNG file
+        logo_base64 = get_base64_of_bin_file("becton_logo.png")
+        
+        # Displaying the Image with a subtle glowing border
+        st.markdown(f"""
+        <div style="text-align: center; padding-bottom: 20px;">
+            <img src="data:image/png;base64,{logo_base64}" 
+                 style="width: 130px; border-radius: 10px; border: 1px solid rgba(0, 245, 255, 0.3); box-shadow: 0 0 10px rgba(0, 245, 255, 0.1);">
         </div>
-        <h1>BECTON</h1>
-        <p>AI Event Intelligence</p>
-        <div class="online-badge">
+        """, unsafe_allow_html=True)
+        
+    except FileNotFoundError:
+        # Fallback if the image file is missing
+        st.warning("becton_logo.png not found.")
+
+    # 2. Simplified & Helpful Title and Badge
+    st.markdown("""
+    <div style="text-align: center;">
+        <h1 style="color:white; font-family:'Orbitron',monospace; margin-top:0px;">BECTON</h1>
+        <p style="color:#888;">Official Bectagon 2k26 Assistant</p>
+        <div class="online-badge" style="margin-top:10px;">
             <div class="pulse-dot"></div>
-            SYSTEMS ONLINE
+            ACTIVE COMPANION
         </div>
     </div>
+    <br>
     """, unsafe_allow_html=True)
 
     page = st.selectbox(
